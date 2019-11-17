@@ -97,7 +97,7 @@ def handle_midi_command(midi_in, commands):
 
 def commands_from_controls(controls):
     midi_to_command = {}
-    for (command,matchers) in controls.iteritems():
+    for (command,matchers) in controls.items():
         key = (matchers["first"], matchers["second"])
         if key in midi_to_command:
             print ("same midi for:" + midi_to_command[key] + " and " + command)

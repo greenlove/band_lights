@@ -1,0 +1,14 @@
+[Unit]
+Description=Band Lights
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/python3 -u lights_show.py palettes.json foot_controls.json
+WorkingDirectory=/home/pi/git/band_lights
+StandardOutput=inherit
+StandardError=inherit
+Restart=always
+User=pi
+
+[Install]
+WantedBy=multi-user.target
