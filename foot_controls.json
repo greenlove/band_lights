@@ -1,0 +1,7 @@
+{
+    "next_palette": {"first": "0x90", "second": "0x11"},
+    "prev_palette": {"first": "0x90", "second": "0x1"},
+    "home": {"first": "0x90", "second": "0xc"},
+    "brightness": {"first": "0xb0", "second": "0x1b"},
+    "timing": {"first": "0xb0", "second": "0x7"}
+}

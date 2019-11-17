@@ -15,6 +15,11 @@
   "amber" : "ffbf00"
  },
  "palettes": [
+     
+     {"name": "black",
+      "colors": ["black", "black", "black"]},     
+     {"name": "white",
+      "colors": ["white", "white", "white"]},     
      {"name": "rebel",
       "colors": ["cyan", "cyan", "green", "cyan", "green", "cyan", "cyan", "blue"]},
      {"name": "goodbye",
