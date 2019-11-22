@@ -55,9 +55,27 @@
       "colors": ["cyan", "amber", "magenta"]},
      {"name": "space_captain",
       "colors": ["red", "blue", "yellow", "green"]},
+     {"name": "boys_are_back",
+      "colors": ["pink", "pink", "orange", "orange", "purple", "purple", "green", "green", "red", "red", "yellow", "yellow"]},
+     {"name": "rocky_mountain",
+      "colors": ["red", "red", "green", "red", "red", "yellow"]},
+     {"name": "centerfold",
+      "colors": ["orangered", "orangered", "cyan", "cyan"]},
+     {"name": "glory_days",
+      "colors": ["gold", "gold", "cyan", "gold", "gold", "magenta"]},
      {"name": "mrbig",
       "colors": ["gold", "gold", "pink", "gold", "gold", "cyan"]},
+     {"name": "freedom",
+      "colors": ["orangered", "orange", "red", "yellow"]},
+     {"name": "dancin_with_myself",
+      "colors": ["green", "pink", "red", "purple"]},
      {"name": "footloose",
-      "colors": ["white", "cyan", "magenta"]}
+      "colors": ["white", "cyan", "magenta"]},
+     {"name": "so_lonely",
+      "colors": ["purple", "pink", "white", "yellow", "gold"]},
+     {"name": "purple_rain",
+      "colors": ["purple", "purple", "purple", "faint_white", "purple", "purple", "purple", "magenta"]},
+     {"name": "1999",
+      "colors": ["cyan", "amber", "magenta", "magenta"]}
  ]
 }
