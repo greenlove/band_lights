@@ -113,9 +113,10 @@ def set_palette():
     PALETTE = palettes["palettes"][PALETTE_NUM]
     print ("cycling: " + PALETTE["name"])
     COLORS = [palettes["colors"][x] for x in PALETTE["colors"]]
+    num_colors = len(COLORS)
     set_light_color(0, COLORS[0])
     set_light_color(1, COLORS[1])
-    set_light_color(2, COLORS[2])
+    set_light_color(2, COLORS[2% num_colors])
     dmx.render()
 
 def set_brightness():
