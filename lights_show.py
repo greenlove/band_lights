@@ -3,6 +3,7 @@ import time
 import sys
 import json
 import rtmidi
+from colors import *
 
 SWITCH_TIME = 10
 BRIGHTNESS = 0.7
@@ -12,15 +13,6 @@ NUM_PALETTES = 0
 PALETTE = {}
 LIGHTS_VALUES = {}
 
-def get_hex(r, g, b):
-    return "{0:0{1}x}".format(r, 2) + "{0:0{1}x}".format(g, 2) + "{0:0{1}x}".format(b, 2)
-
-def get_rgb(color):
-    r = int(color[0:2], 16)
-    g = int(color[2:4], 16)
-    b = int(color[4:], 16)
-
-    return (r, g, b)
 
 def set_light_color(light_number, color):
     (r, g, b) = get_rgb(color)
@@ -112,7 +104,8 @@ def set_palette():
     global PALETTE_NUM
     PALETTE = palettes["palettes"][PALETTE_NUM]
     print ("cycling: " + PALETTE["name"])
-    COLORS = [palettes["colors"][x] for x in PALETTE["colors"]]
+    COLORS = [resolve_color(c, palettes) for c in PALETTE["colors"]]
+    #print ("COLORS:" + str(COLORS))
     num_colors = len(COLORS)
     set_light_color(0, COLORS[0])
     set_light_color(1, COLORS[1])
