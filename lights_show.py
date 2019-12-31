@@ -119,13 +119,13 @@ def set_brightness():
     dmx.render()
     
 if __name__ == '__main__':
-    if len(sys.argv) != 3:
+    if len(sys.argv) != 4:
         usage()
         sys.exit(-1)
 
-    midiin = rtmidi.MidiIn()
-    midiin.close_port()
-    midiin.open_port(1)
+    # midiin = rtmidi.MidiIn()
+    # midiin.close_port()
+    # midiin.open_port(1)
 
     dmx = DmxPy.DmxPy('/dev/ttyUSB0')
     dmx.blackout()
@@ -133,6 +133,7 @@ if __name__ == '__main__':
     palette_path = sys.argv[1]
     palette_f = open(palette_path, "r")
     controls_path = sys.argv[2]
+    starting_palette = sys.argv[3].strip()
     controls_f = open(controls_path, "r")
     controls_lines = controls_f.read()
     controls = json.loads(controls_lines)
@@ -141,7 +142,11 @@ if __name__ == '__main__':
     palette_lines = palette_f.read()
     palettes = json.loads(palette_lines)
     NUM_PALETTES = len(palettes["palettes"])
-    PALETTE_NUM = 0
+    for p in range(0, len(palettes["palettes"])):
+        if palettes["palettes"][p]["name"] == starting_palette:
+            break
+        
+    PALETTE_NUM = p
     set_palette()
     
     count = 0
@@ -159,6 +164,6 @@ if __name__ == '__main__':
             
             i+= 1
             time.sleep(MIDI_SLEEP)
-            handle_midi_command(midiin, commands)
+            #handle_midi_command(midiin, commands)
         count += 1
     

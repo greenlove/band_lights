@@ -16,7 +16,7 @@ def get_rgb(color):
 def color_shift(color, hue_shift):
     (r, g, b) = get_rgb(color)
     (h, l, s) = colorsys.rgb_to_hls(r / 255.0, g/ 255.0, b / 255.0)
-    (r_new, g_new, b_new) = colorsys.hls_to_rgb(h + hue_shift, l, s)
+    (r_new, g_new, b_new) = colorsys.hls_to_rgb(h + hue_shift / 360.0, l, s)
     return get_hex(int(r_new * 255), int(g_new * 255), int(b_new * 255))
 
 def color_next(color1, color2):
@@ -45,21 +45,21 @@ def resolve_color(color_str, palettes):
     if color_str in palettes["colors"]:
         return palettes["colors"][color_str]
 
-    shift_pattern = "color_shift\(([a-z0-9]*),\s?(-?[0-9]*.[0-9]*)\)"
+    shift_pattern = "color_shift\(([a-z_0-9]*),\s?(-?[0-9]*)\)"
     shift_match = re.match(shift_pattern, color_str)
     if shift_match:
         color = resolve_color(shift_match.group(1), palettes)
         shift = float(shift_match.group(2))
         return color_shift(color, shift)
 
-    next_pattern = "color_next\(([a-z0-9]*),\s?([a-z0-9]*)\)"
+    next_pattern = "color_next\(([a-z_0-9]*),\s?([a-z0-9]*)\)"
     next_match = re.match(next_pattern, color_str)
     if next_match:
         color1 = resolve_color(next_match.group(1), palettes)
         color2 = resolve_color(next_match.group(2), palettes)
         return color_next(color1, color2)
 
-    mid_pattern = "color_mid\(([a-z0-9]*),\s?([a-z0-9]*)\)"
+    mid_pattern = "color_mid\(([a-z_0-9]*),\s?([a-z0-9]*)\)"
     mid_match = re.match(mid_pattern, color_str)
     if mid_match:
         color1 = resolve_color(mid_match.group(1), palettes)
