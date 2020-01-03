@@ -1,0 +1,34 @@
+{
+    "lights" : [
+	{
+	    "channel": 1,
+	    "type": "RGB",
+	    "location": ["back", "left"]
+	},
+	{
+	    "channel": 4,
+	    "type": "RGB",
+	    "location": ["back", "center"]
+	},
+	{
+	    "channel": 7,
+	    "type": "RGB",
+	    "location": ["back", "right"]
+	},
+	{
+	    "channel": 10,
+	    "type": "RGB",
+	    "location": ["front", "left"]
+	},
+	{
+	    "channel": 13,
+	    "type": "RGB",
+	    "location": ["front", "center"]
+	},
+	{
+	    "channel": 16,
+	    "type": "RGB",
+	    "location": ["front", "right"]
+	}
+    ]
+}

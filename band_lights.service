@@ -2,7 +2,7 @@
 Description=Band Lights
 
 [Service]
-ExecStart=/usr/bin/python3 -u lights_show.py palettes.json foot_controls.json
+ExecStart=/usr/bin/python3 -u lights_show.py palettes.json foot_controls.json lights.json
 WorkingDirectory=/home/pi/git/band_lights
 StandardOutput=inherit
 StandardError=inherit

@@ -2,6 +2,7 @@ import sys
 import colorsys
 import json
 import re
+import math
 
 def get_hex(r, g, b):
     return "{0:0{1}x}".format(r, 2) + "{0:0{1}x}".format(g, 2) + "{0:0{1}x}".format(b, 2)
@@ -12,6 +13,37 @@ def get_rgb(color):
     b = int(color[4:], 16)
 
     return (r, g, b)
+
+def hls_dist(h1, l1, s1, h2, l2, s2):
+    return math.sqrt((h1 - h2) ** 2 + (l1 - l2) ** 2 + (s1 - s2) ** 2)
+
+def closest_color(color, colors, palettes):
+    target = resolve_color(color, palettes)
+    (t_r, t_g, t_b) = get_rgb(target)
+    (t_h, t_l, t_s) = colorsys.rgb_to_hls(t_r / 255.0, t_g/ 255.0, t_b / 255.0)
+
+    distances = []
+    
+    for c in colors:
+        (c_r, c_g, c_b) = get_rgb(c)
+        (c_h, c_l, c_s) = colorsys.rgb_to_hls(c_r / 255.0, c_g/ 255.0, c_b / 255.0)
+        d_c = hls_dist(t_h, c_h, t_l, c_l, t_s, c_s)
+        distances.append(c, d_c)
+
+    
+    distances_sorted = sorted(distances, key=lambda x:x[1])
+    return distances_sorted[0]
+
+
+def change_color(color_start, color_end, change_fraction):
+    (r_start, g_start, b_start) = get_rgb(color_start)
+    (r_end, g_end, b_end) = get_rgb(color_end)
+    new_r = (r_end * change_fraction + r_start * (1 - change_fraction))
+    new_g = (g_end * change_fraction + g_start * (1 - change_fraction))
+    new_b = (b_end * change_fraction + b_start * (1 - change_fraction))
+
+    new_color = get_hex(int(new_r), int(new_g), int(new_b))
+    return new_color
 
 def color_shift(color, hue_shift):
     (r, g, b) = get_rgb(color)
